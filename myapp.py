@@ -3,7 +3,7 @@
 # Core Pkg
 import streamlit as st 
 import os
-
+os.environ['LI_AT_COOKIE'] = "AQEDATL5DxIEeBgwAAABfNIMGqcAAAF89hiep1YANfMYAQlcYeXsiYLrUBscUe7kPTc2GmoiNqRu9EF8HGXGKFYtbIkVkea4q4mJtKUjQ5ChMqiBxu9zap0-Wkl2WxTXEeQCna7wOmJ45ewT13JH7wQL"
 
 # Load LSA
 import gensim
