@@ -155,18 +155,17 @@ def main():
 							link = []
 
 							def on_data(data: EventData):
-							#     print('[ON_DATA]', data.title, data.company, data.date, data.description, data.link, len(data.description))
-								# post_title.append(translator.translate(data.title, lang_src='auto',lang_tgt='en'))
+								#print('[ON_DATA]', data.title, data.company, data.date, data.description, data.link, len(data.description))
+								#post_title.append(translator.translate(data.title, lang_src='auto',lang_tgt='en'))
 								post_title.append(data.title)
 								id_job = (len(post_title))
 								id.append(id_job)
 								job_location.append(data.place)
-								# company_name.append(translator.translate(data.company, lang_src='auto',lang_tgt='en'))
 								company_name.append(data.company)
 								post_date.append(data.date)
-								# job_des.append(translator.translate(data.description, lang_src='auto',lang_tgt='en'))
+								#job_desc = translator.translate(data.description, lang_src='auto',lang_tgt='en')
 								job_des.append(data.description)
-								link.append(data.link)						
+								link.append(data.link)					
 								
 							def on_error(error):
 								print('[ON_ERROR]', error)
