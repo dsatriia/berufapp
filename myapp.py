@@ -433,7 +433,6 @@ class google_translator:
             log.debug(str(e))
             raise google_new_transError(tts=self)
 #Bismillah
-
 # Core Pkg
 import streamlit as st 
 import os
@@ -450,7 +449,6 @@ from linkedin_jobs_scraper import LinkedinScraper
 from linkedin_jobs_scraper.events import Events, EventData
 from linkedin_jobs_scraper.query import Query, QueryOptions, QueryFilters
 from linkedin_jobs_scraper.filters import RelevanceFilters, TimeFilters, TypeFilters, ExperienceLevelFilters
-from google_trans_new import google_translator  
 from webdriver_manager.driver import GeckoDriver  
 translator = google_translator() 
 
@@ -590,15 +588,16 @@ def main():
 
 							def on_data(data: EventData):
 								#print('[ON_DATA]', data.title, data.company, data.date, data.description, data.link, len(data.description))
-								#post_title.append(translator.translate(data.title, lang_src='auto',lang_tgt='en'))
-								post_title.append(data.title)
+								post_title.append(translator.translate(data.title, lang_src='auto',lang_tgt='en'))
+# 								post_title.append(data.title)
 								id_job = (len(post_title))
 								id.append(id_job)
 								job_location.append(data.place)
-								company_name.append(data.company)
+								company_name.append(translator.translate(data.company, lang_src='auto',lang_tgt='en'))
+# 								company_name.append(data.company)
 								post_date.append(data.date)
-								#job_desc = translator.translate(data.description, lang_src='auto',lang_tgt='en')
-								job_des.append(data.description)
+								job_desc = translator.translate(data.description, lang_src='auto',lang_tgt='en')
+								job_des.append(job_desc)
 								link.append(data.link)					
 								
 							def on_error(error):
@@ -655,8 +654,8 @@ def main():
 							job_data['Description'] = job_data['Description'].str.replace('\n',' ')
 								
 							
-							print(job_data.info())
-							st.subheader("Data Hasil Scrapppp")
+							# print(job_data.info())
+							st.subheader("Data Hasil Scrap")
 							#job_data.head()
 							job_data.to_csv('datascraptest.csv', index=0, encoding='utf-8')
 							dframe = load_data("datascraptest.csv")
@@ -688,16 +687,16 @@ def main():
 
 							def on_data(data: EventData):
 							#     print('[ON_DATA]', data.title, data.company, data.date, data.description, data.link, len(data.description))
-								# post_title.append(translator.translate(data.title, lang_src='auto',lang_tgt='en'))
-								post_title.append(data.title)
+								post_title.append(translator.translate(data.title, lang_src='auto',lang_tgt='en'))
+# 								post_title.append(data.title)
 								id_job = (len(post_title))
 								id.append(id_job)
 								job_location.append(data.place)
-								# company_name.append(translator.translate(data.company, lang_src='auto',lang_tgt='en'))
-								company_name.append(data.company)
+								company_name.append(translator.translate(data.company, lang_src='auto',lang_tgt='en'))
+# 								company_name.append(data.company)
 								post_date.append(data.date)
-								# job_des.append(translator.translate(data.description, lang_src='auto',lang_tgt='en'))
-								job_des.append(data.description)
+								job_des.append(translator.translate(data.description, lang_src='auto',lang_tgt='en'))
+# 								job_des.append(data.description)
 								link.append(data.link)						
 								
 							def on_error(error):
